@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Función para calcular factorial de un número
+# funcion para obtener el factorial de un numero
 def factorial(n):
     if n == 0 or n == 1:
         return 1
@@ -12,11 +12,11 @@ def factorial(n):
             resultado *= i
         return resultado
 
-# Ruta principal: recibe el número por la URL
-@app.route('/factorial/<int:numero>', methods=['GET'])
+# recibe el número por la URL
+@app.route('/<int:numero>', methods=['GET'])
 def calcular_factorial(numero):
     fact = factorial(numero)
-    etiqueta = "par" if fact % 2 == 0 else "impar"
+    etiqueta = "par" if numero % 2 == 0 else "impar"
 
     respuesta = {
         "numero_recibido": numero,
